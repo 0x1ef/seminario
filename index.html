@@ -1,0 +1,38 @@
+<html>
+<head>
+	<title>prueba 01</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<header><h1>Interfaz</h1></header>
+	<main>
+		<div class="container-fluid">
+			<div class="row">
+			<div class="col-sm-3" style="background-color:grey;">
+				<h4>Menu</h4>
+                <a href="mostrar.php" class="btn btn-primary">Mostrar Archivos</a>
+			</div>
+			
+			<div class="col-sm-9">
+				<h4>Complete el formulario</h4>
+				<form method="POST" action="cargar.php" enctype="multipart/form-data">
+					<p>Descripcion: <input type="text" name="desc"></p>
+					<p>archivo<input type="file" name="subir"></p>
+					<p><button type="submit" class="btn btn-primary">subir</button></p>
+				
+				</form>
+			</div>
+			</div>
+		</div>
+
+	</main>
+
+	<footer></footer>
+</body>
+</html>
