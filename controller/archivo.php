@@ -52,4 +52,15 @@ class ArchivoController{
 		}
 		
 	}
+	public function Registrar(){
+		require_once 'view/header.php';
+		require_once 'view/registrar.html';
+		require_once 'view/footer.php';
+	}
+	
+	public function Registraru(){
+		echo "registro un usuario";
+		require_once 'view/header.php';
+		require_once 'view/footer.php';
+	}
 }
