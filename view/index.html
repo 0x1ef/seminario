@@ -1,23 +1,12 @@
-	<header><h1>Interfaz</h1></header>
-	<main>
-		<div class="container-fluid">
-			<div class="row">
-			<div class="col-sm-3" style="background-color:grey;">
-				<h4>Menu</h4>
-                <a href="index.php?c=archivo&a=listar" class="btn btn-primary">Mostrar Archivos</a>
-			</div>
-			
-			<div class="col-sm-9">
-				<h4>Complete el formulario</h4>
-				<form method="POST" action="index.php?c=archivo&a=cargar" enctype="multipart/form-data">
-					<p>Descripcion: <input type="text" name="desc"></p>
-					<p>archivo<input type="file" name="subir"></p>
-					<p><button type="submit" class="btn btn-primary">subir</button></p>
-				
-				</form>
-			</div>
-			</div>
-		</div>
-
-	</main>
-
+<header></head>
+<main>
+	<h1>Iniciar Sesion</h1>
+	<div>
+	<form method="post" action="index.php?c=archivo&a=login">
+		<p>Usuario<input type="text" name="usuario"></p>
+		<p>Contraseña<input type="password" name="pass"</p>
+		<p><button type="submit">Ingresar</button>
+	</form>
+	<input type="button" value="Registrar" onclick="location='/index.php?c=archivo&a=registrar'">
+	</div>
+</main>
