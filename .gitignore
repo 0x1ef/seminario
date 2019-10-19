@@ -1,2 +1,10 @@
 
 config/conexion.php
+
+composer.json
+
+vendor/
+
+tests/
+
+composer.lock
