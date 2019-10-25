@@ -5,6 +5,7 @@ class Usuario{
 	public $nombre;
 	public $apellido;
 	public $correo;
+	public $nombreUsuario;
 	public $pass;
 	public function __CONSTRUCT(){
 		try{
@@ -13,7 +14,16 @@ class Usuario{
 			die($e->getMessage());
 		}
 	}
-
+	public function login(){
+		//try{
+			$sql="SELECT * FROM usuario WHERE nombreusuario='".$this->nombreUsuario."' AND pass='".$this->pass."' AND estado=1";
+			$resultado=$this->pdo->prepare($sql);
+			$resultado->execute();
+			return $resultado->fetchAll();
+		//}catch(Exception $e){
+		//	die($e->getMessage());
+		//}
+	}
 	public function Registraru(){
 		try{
 			$sql="INSERT INTO archivos(nombre,apellido,correo,pass,estado) VALUES(:nombre,:apellido,:correo,:pass,0)";
@@ -25,7 +35,7 @@ class Usuario{
 			$resultado->execute();
 			echo "El usuario se registro correctamente, se requiere aprobacion del administrador";
 		}catch(Exception $e){
-			die("Error se puedo registrar el usuario".$e->getMessage());
+			die("Error no se puedo registrar el usuario".$e->getMessage());
 		}
 	}
 }

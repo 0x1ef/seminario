@@ -7,7 +7,17 @@ class UsuarioController{
 	public function __CONSTRUCT(){
 		$this->model = new Usuario();
 	}
-
+	public function login(){
+		$tmp = new Usuario();
+		//cargar datos de usuario
+		$tmp->nombreUsuario = $_POST['usuario'];
+		$tmp->pass = $_POST['pass'];
+		if($tmp->login()){
+			echo"Ingreso";
+		}else{
+			echo"Datos incorrectos";
+		}
+	}
 	public function Registrar(){
 		require_once 'view/header.php';
 		require_once 'view/registrar.html';
