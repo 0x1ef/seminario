@@ -26,12 +26,8 @@ class Usuario{
 	}
 	public function Registraru(){
 		try{
-			$sql="INSERT INTO archivos(nombre,apellido,correo,pass,estado) VALUES(:nombre,:apellido,:correo,:pass,0)";
+			$sql=" INSERT INTO usuario(nombre,apellido,correo,pass,tipodeusuario,estado,nombreusuario) VALUES('".$this->nombre."','".$this->apellido."','".$this->correo."','".$this->pass."',2,0,'".$this->nombreUsuario."')";
 			$resultado=$this->pdo->prepare($sql);
-			$resultado->bindValue(":nombre",$this->nombre);
-			$resutado->bindValue(":apellido",$this->apellido);
-			$resutado->bindValue(":correo",$this->correo);
-			$resutado->bindValue(":pass",$this->pass);
 			$resultado->execute();
 			echo "El usuario se registro correctamente, se requiere aprobacion del administrador";
 		}catch(Exception $e){

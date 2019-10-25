@@ -29,6 +29,7 @@ class UsuarioController{
 		$tmp->nombre = $_POST['nombre'];
 		$tmp->apellido = $_POST['apellido'];
 		$tmp->correo = $_POST['correo'];
+		$tmp->nombreUsuario=$_POST['nombreusr'];
 		$tmp->pass = $_POST['pass'];
 		$tmp->Registraru();
 		require_once 'view/header.php';
