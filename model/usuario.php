@@ -7,6 +7,7 @@ class Usuario{
 	public $correo;
 	public $nombreUsuario;
 	public $pass;
+	public $tipodeusuario;
 	public function __CONSTRUCT(){
 		try{
 			$this->pdo = Database::Startup();
@@ -19,7 +20,15 @@ class Usuario{
 			$sql="SELECT * FROM usuario WHERE nombreusuario='".$this->nombreUsuario."' AND pass='".$this->pass."' AND estado=1";
 			$resultado=$this->pdo->prepare($sql);
 			$resultado->execute();
-			return $resultado->fetchAll();
+			$tmp1 = $resultado->fetchAll();
+			if($tmp1){
+				$this->nombre=$tmp1[0]['nombre'];
+				$this->apellido=$tmp1[0]['apellido'];
+				$this->correo=$tmp1[0]['correo'];
+				$this->tipodeusuario=$tmp1[0]['tipodeusuario'];
+			}
+			//return $resultado->fetchAll();
+			return $tmp1;
 		//}catch(Exception $e){
 		//	die($e->getMessage());
 		//}

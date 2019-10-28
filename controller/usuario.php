@@ -13,7 +13,15 @@ class UsuarioController{
 		$tmp->nombreUsuario = $_POST['usuario'];
 		$tmp->pass = $_POST['pass'];
 		if($tmp->login()){
-			echo"Ingreso";
+			if($tmp->tipodeusuario==1){
+				session_start();
+				$_SESSION["usuario"]=$tmp->nombreUsuario;
+				require_once 'view/header.php';
+				require_once 'view/administrador.php';
+				require_once 'view/footer.php';
+			}else{
+				"Usuario Comun";
+			}
 		}else{
 			echo"Datos incorrectos";
 		}
