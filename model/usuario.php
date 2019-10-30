@@ -43,4 +43,15 @@ class Usuario{
 			die("Error no se puedo registrar el usuario".$e->getMessage());
 		}
 	}
+	public function consultarUsuariop(){
+		try{
+				$sql="SELECT * FROM usuario WHERE estado = 0";
+				$resultado=$this->pdo->prepare($sql);
+				$resultado->execute();
+				$tmp1=$resultado->fetchAll();
+				return $tmp1;
+		}catch(Exception $e){
+				die("Error al consultar los usuarios ".$e->getMessage());
+		}
+	}
 }
