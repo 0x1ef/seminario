@@ -4,7 +4,7 @@
 		header("Location:../index.php");
 	}
 	echo "<h1>Usuarios Pendientes </h1>";
-	echo "<form method='POST' action=''>";
+	echo "<form method='POST' action='index.php?c=usuario&a=activar'>";
 	echo "<table class='table table-bordered>'";
 	echo "<tr class='table-primary'>";
 	echo "<th>Nombre</th><th>apellido</th><th>correo</th><th>nombre de usuario</th><th>opciones</th>";

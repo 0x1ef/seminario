@@ -8,6 +8,7 @@ class Usuario{
 	public $nombreUsuario;
 	public $pass;
 	public $tipodeusuario;
+	public $id;
 	public function __CONSTRUCT(){
 		try{
 			$this->pdo = Database::Startup();
@@ -53,5 +54,12 @@ class Usuario{
 		}catch(Exception $e){
 				die("Error al consultar los usuarios ".$e->getMessage());
 		}
+	}
+
+	public function activar(){
+		$sql="UPDATE usuario set estado=1 where id=:ids";
+		$resultado=$this->pdo->prepare($sql);
+		$resultado->bindValue(':ids',$this->id);
+		$resultado->execute();
 	}
 }

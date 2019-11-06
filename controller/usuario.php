@@ -52,4 +52,10 @@ class UsuarioController{
 			require_once 'view/footer.php';
 
 	}
+	public function activar(){
+		$tmp = new Usuario();
+		$tmp->id=$_POST['validar'];
+		$tmp->activar();
+		echo "Se activo el usuario";
+	}
 }
