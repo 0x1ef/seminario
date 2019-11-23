@@ -14,7 +14,9 @@ class UsuarioController{
 		$tmp->pass = $_POST['pass'];
 		if($tmp->login()){
 			if($tmp->tipodeusuario==1){
-				session_start();
+				if(!isset($_SESSION)){ 
+					session_start();
+				}	 
 				$_SESSION["usuario"]=$tmp->nombreUsuario;
 				require_once 'view/header.php';
 				require_once 'view/administrador.php';
