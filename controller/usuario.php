@@ -14,18 +14,24 @@ class UsuarioController{
 		$tmp->pass = $_POST['pass'];
 		if($tmp->login()){
 			if($tmp->tipodeusuario==1){
-				if(!isset($_SESSION)){ 
+				if(!isset($_SESSION)){
 					session_start();
-				}	 
+				}
 				$_SESSION["usuario"]=$tmp->nombreUsuario;
 				require_once 'view/header.php';
 				require_once 'view/administrador.php';
 				require_once 'view/footer.php';
 			}else{
+				if(!isset($_SESSION)){
+					session_start();
+				}
+				require_once 'view/header.php';
+				require_once 'view/usuarioComun.php';
+				require_once 'view/footer.php';
 				"Usuario Comun";
 			}
 		}else{
-			echo"Datos incorrectos";
+			echo"Datos incorrectos O usuario no activo";
 		}
 	}
 	public function Registrar(){
