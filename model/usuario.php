@@ -61,5 +61,11 @@ class Usuario{
 		$resultado=$this->pdo->prepare($sql);
 		$resultado->bindValue(':ids',$this->id);
 		$resultado->execute();
+		$sql2="SELECT nombreusuario FROM usuario WHERE id=:id";
+		$resultado2=$this->pdo->prepare($sql2);
+		$resultado2->bindValue(':id',$this->id);
+		$resultado2->execute();
+		$tmp=$resultado2->fetchAll();
+		$this->nombreUsuario=$tmp[0]['nombreusuario'];
 	}
 }

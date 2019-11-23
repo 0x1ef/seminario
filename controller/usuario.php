@@ -28,7 +28,6 @@ class UsuarioController{
 				require_once 'view/header.php';
 				require_once 'view/usuarioComun.php';
 				require_once 'view/footer.php';
-				"Usuario Comun";
 			}
 		}else{
 			echo"Datos incorrectos O usuario no activo";
@@ -64,6 +63,8 @@ class UsuarioController{
 		$tmp = new Usuario();
 		$tmp->id=$_POST['validar'];
 		$tmp->activar();
+		$ruta='files/'.$tmp->nombreUsuario;
+		mkdir($ruta,0777);
 		echo "Se activo el usuario";
 	}
 }
