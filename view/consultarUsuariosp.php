@@ -7,7 +7,7 @@
 	echo "<form method='POST' action='index.php?c=usuario&a=activar'>";
 	echo "<table class='table table-bordered>'";
 	echo "<tr class='table-primary'>";
-	echo "<th>Nombre</th><th>apellido</th><th>correo</th><th>nombre de usuario</th><th>opciones</th>";
+	echo "<th>Nombre</th><th>apellido</th><th>correo</th><th>nombre de usuario</th><th>Seleccionar</th>";
 	echo "</tr>";
 	foreach ($datos as $valor){
 		echo "<tr>";
