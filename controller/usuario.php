@@ -67,4 +67,11 @@ class UsuarioController{
 		mkdir($ruta,0777);
 		echo "Se activo el usuario";
 	}
+	public function consultarUsuario(){
+		$tmp = new Usuario();
+		$datos=$tmp->consultarUsuario();
+		require_once 'view/header.php';
+		require_once 'view/consultarUsuarios.php';
+		require_once 'view/footer.php';
+	}
 }

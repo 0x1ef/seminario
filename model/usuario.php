@@ -56,6 +56,19 @@ class Usuario{
 		}
 	}
 
+	public function consultarUsuario(){
+		try{
+			$sql="SELECT * FROM usuario";
+			$resultado=$this->pdo->prepare($sql);
+			$resultado->execute();
+			$tmp1=$resultado->fetchAll();
+			return $tmp1;
+		}catch(Exception $e){
+				die("Erro al consultar usuarios".$e->getMessage());
+		}
+
+	}
+
 	public function activar(){
 		$sql="UPDATE usuario set estado=1 where id=:ids";
 		$resultado=$this->pdo->prepare($sql);
