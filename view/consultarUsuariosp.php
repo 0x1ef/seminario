@@ -3,7 +3,7 @@
 	if(!isset($_SESSION["usuario"])){
 		header("Location:../index.php");
 	}
-	echo "<h1>Usuarios Pendientes </h1>";
+	echo "<header><h1>Usuarios Pendientes </h1></header>";
 	echo "<form method='POST' action='index.php?c=usuario&a=activar'>";
 	echo "<table class='table table-bordered>'";
 	echo "<tr class='table-primary'>";
@@ -19,7 +19,7 @@
 		echo "</tr>";
 	}
 	echo "</table>";
-	echo "<input class='btn btn-primary' type='submit' value='activar'>";
+	echo "<input class='btn btn-success' type='submit' value='activar'>";
 	echo "<a href='administrador.php' class='btn btn-primary'>Volver</a>";
 	echo "</form>";
 ?>
