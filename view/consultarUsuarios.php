@@ -19,6 +19,6 @@
 		echo "</tr>";
 	}
 	echo "</table>";
-	echo "<a href='index.php' class='btn btn-primary'>volver</a>";
+	echo "<a href='index.php?c=administrador&a=index' class='btn btn-primary'>volver</a>";
 	
 ?>
