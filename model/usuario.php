@@ -39,7 +39,6 @@ class Usuario{
 			$sql=" INSERT INTO usuario(nombre,apellido,correo,pass,tipodeusuario,estado,nombreusuario) VALUES('".$this->nombre."','".$this->apellido."','".$this->correo."','".$this->pass."',2,0,'".$this->nombreUsuario."')";
 			$resultado=$this->pdo->prepare($sql);
 			$resultado->execute();
-			echo "El usuario se registro correctamente, se requiere aprobacion del administrador";
 		}catch(Exception $e){
 			die("Error no se puedo registrar el usuario".$e->getMessage());
 		}

@@ -8,10 +8,21 @@ class Administrador{
 	public $pass;
 	public $tipodeusuario;
 	public $id;
-	
+
 	public function __CONSTRUCT(){
 		try{
 			$this->pdo = Database::Startup();
+		}catch(Exception $e){
+			die($e->getMessage());
+		}
+	}
+
+	public function eliminar(){
+		try{
+			$sql="DELETE FROM usuario WHERE id=:id";
+			$resultado=$this->pdo->prepare($sql);
+			$resultado->bindValue(':id',$this->id);
+			$resultado->execute();
 		}catch(Exception $e){
 			die($e->getMessage());
 		}

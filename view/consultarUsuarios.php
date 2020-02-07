@@ -15,7 +15,7 @@
 		echo "<td>".$valor['correo']."</td>";
 		echo "<td>".$valor['nombreusuario']."</td>";
 		echo "<td>".$valor['estado']."</td>";
-		echo "<td> <a href='index.php?c=usuario&a=modificar'> <i class='fas fa-edit fa-2x'></i></a> <a href='index.php?c=usuario&a=eliminar'><i class='fas fa-trash-alt fa-2x'></i></a> </td>";
+		echo "<td> <a href='index.php?c=administrador&a=modificar'> <i class='fas fa-edit fa-2x'></i></a> <a href='index.php?c=administrador&a=eliminar&id=".$valor['id']."'><i class='fas fa-trash-alt fa-2x'></i></a> </td>";
 		echo "</tr>";
 	}
 	echo "</table>";

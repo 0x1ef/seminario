@@ -20,6 +20,6 @@
 	}
 	echo "</table>";
 	echo "<input class='btn btn-success' type='submit' value='activar'>";
-	echo "<a href='administrador.php' class='btn btn-primary'>Volver</a>";
+	echo "<a href='index.php?c=administrador&a=index' class='btn btn-primary'>Volver</a>";
 	echo "</form>";
 ?>
