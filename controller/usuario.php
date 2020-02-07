@@ -47,8 +47,10 @@ class UsuarioController{
 		$tmp->nombreUsuario=$_POST['nombreusr'];
 		$tmp->pass = $_POST['pass'];
 		$tmp->Registraru();
+		echo "<scrip>alert('EL usuario se registro correctamente, es necesario aprobación del administrador')</script>";
 		require_once 'view/header.php';
 		require_once 'view/footer.php';
+		echo "<meta http-equiv='refresh' content='1; url=index.php'>";
 	}
 
 	public function consultarUsuariop(){
@@ -65,7 +67,8 @@ class UsuarioController{
 		$tmp->activar();
 		$ruta='files/'.$tmp->nombreUsuario;
 		mkdir($ruta,0777);
-		echo "Se activo el usuario";
+		header('Location: index.php?c=administrador&a=index');
+
 	}
 	public function consultarUsuario(){
 		$tmp = new Usuario();
