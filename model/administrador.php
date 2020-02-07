@@ -27,6 +27,19 @@ class Administrador{
 			die($e->getMessage());
 		}
 	}
+
+	public function existe(){
+		$sql="SELECT  id FROM usuario WHERE id=:id";
+		$resultado=$this->pdo->prepare($sql);
+		$resultado->bindValue(':id',$this->id);
+		$resultado->execute();
+		$tmp = $resultado->fetchAll();
+		if(!empty($tmp)){
+			return true;
+		}else {
+			return false;
+		}
+	}
 }
 
 ?>
