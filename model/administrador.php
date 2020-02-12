@@ -51,7 +51,29 @@ class Administrador{
 	}
 
 	public function actualizarD(){
-		
+		if(!empty($this->pass)){
+			$sql="UPDATE usuario SET nombre=:nombre,apellido=:apellido,correo=:correo,pass=:pass,tipodeusuario=:tipo,nombreusuario=:usuario WHERE id=:id";
+			$resultado= $this->pdo->prepare($sql);
+			$resultado->bindValue(':nombre',$this->nombre);
+			$resultado->bindValue(':apellido',$this->apellido);
+			$resultado->bindValue(':correo',$this->correo);
+			$resultado->bindValue(':pass',$this->pass);
+			$resultado->bindValue(':tipo',$this->tipodeusuario);
+			$resultado->bindValue(':usuario',$this->nombreUsuario);
+			$resultado->bindValue(':id',$this->id);
+			$resultado->execute();
+		}else{
+			$sql="UPDATE usuario SET nombre=:nombre,apellido=:apellido,correo=:correo,tipodeusuario=:tipo,nombreusuario=:usuario WHERE id=:id";
+			$resultado= $this->pdo->prepare($sql);
+			$resultado->bindValue(':nombre',$this->nombre);
+			$resultado->bindValue(':apellido',$this->apellido);
+			$resultado->bindValue(':correo',$this->correo);
+			$resultado->bindValue(':tipo',$this->tipodeusuario);
+			$resultado->bindValue(':usuario',$this->nombreUsuario);
+			$resultado->bindValue(':id',$this->id);
+			$resultado->execute();
+		}
+
 	}
 
 	public function setNombre($nombre){
