@@ -14,7 +14,7 @@
 		echo "<td>".$valor['apellido']."</td>";
 		echo "<td>".$valor['correo']."</td>";
 		echo "<td>".$valor['nombreusuario']."</td>";
-		echo "<td>".$valor['estado']."</td>";
+		if($valor['estado']==0){echo "<td>Pendiente</td>";}else{echo "<td>Activo</td>";}
 		echo "<td> <a href='index.php?c=administrador&a=modificar&id=".$valor['id']."'> <i class='fas fa-edit fa-2x'></i></a> <a href='index.php?c=administrador&a=eliminar&id=".$valor['id']."'><i class='fas fa-trash-alt fa-2x'></i></a> </td>";
 		echo "</tr>";
 	}
