@@ -15,7 +15,9 @@
     	<div class="centrar">
     		<h1>Cargar Tarea</h1>
     		<div>
-    			<form method="post" action="index.php?c=archivo&a=cargar" enctype="multipart/form-data" class="px-6 py-4">
+    			<form method="post" action="index.php?c=archivo&a=cargarTarea" enctype="multipart/form-data" class="px-6 py-4">
+                    <input type="hidden" name="id" value="<?php echo $this->model->getId();?>">
+                    <input type="hidden" name="nombreUsuario" value="<?php echo $this->model->getNombreUsuario();?>">
     				<div class="form-group row">
     					<div class="col-sm-4">
     						<label for="titulo">Titulo o Descripcion</label>

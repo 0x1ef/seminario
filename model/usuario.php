@@ -27,6 +27,7 @@ class Usuario{
 				$this->apellido=$tmp1[0]['apellido'];
 				$this->correo=$tmp1[0]['correo'];
 				$this->tipodeusuario=$tmp1[0]['tipodeusuario'];
+				$this->id=$tmp1[0]['id'];
 			}
 			//return $resultado->fetchAll();
 			return $tmp1;

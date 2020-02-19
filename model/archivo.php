@@ -39,18 +39,15 @@ class Archivo
 		}
 	}
 
-	public function Cargar()
+	public function Cargar($idUsuario)
 	{
 		try{
-			$sql="INSERT INTO archivos(nombre,descripcion,ruta,tipo,size) VALUES(:nombre,:descripcion,:ruta,:tipo,:size)";
+			$sql="INSERT INTO tarea(titulo,descripcion,estado,usuario) VALUES(:titulo,:descripcion,1,:id)";
 			$resultado=$this->pdo->prepare($sql);
-			$resultado->bindValue(":nombre",$this->nombre);
+			$resultado->bindValue(":titulo",$this->nombre);
 			$resultado->bindValue(":descripcion",$this->descripcion);
-			$resultado->bindValue(":ruta",$this->ruta);
-			$resultado->bindValue(":tipo",$this->tipo);
-			$resultado->bindValue(":size",$this->size);
+			$resultado->bindValue(":id",$idUsuario);
 			$resultado->execute();
-			echo "el archivo se cargo correctamente";
 		}catch(Exception $e){
 			die("Erro no se cargo el archivo".$e->getMessage());
 		}

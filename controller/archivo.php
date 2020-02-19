@@ -24,19 +24,23 @@ class ArchivoController{
         require_once 'view/footer.php';	
     }
     
-    public function Cargar(){
-        $tmp = new Archivo();
-        
-        $tmp->nombre = $_FILES['subir']['name'];
-        $tmp->descripcion = $_POST['desc'];
-        $tmp->ruta = './files/';
-        $tmp->tipo = $_FILES['subir']['type'];
-        $tmp->size = $_FILES['subir']['size'];
-		if(move_uploaded_file($_FILES['subir']['tmp_name'], $tmp->ruta.$tmp->nombre))
-				$tmp->Cargar();
-		else
-			die("No se pudo cargar el archivo-> $tmp->ruta $tmp->nombre");
-        header('Location: index.php');
+    public function CargarTarea(){
+        $nombreUsuario = $_POST['nombreUsuario'];
+        $idUsuario = $_POST['id'];
+        $this->model->nombre = $_FILES['subir']['name'];
+        $this->model->descripcion = $_POST['desc'];
+        $this->model->ruta = './files/'.$nombreUsuario.'/';
+        $this->model->tipo = $_FILES['subir']['type'];
+        $this->model->size = $_FILES['subir']['size'];
+		
+        if(move_uploaded_file($_FILES['subir']['tmp_name'], $this->model->ruta.$this->model->nombre)){
+				$this->model->Cargar($idUsuario);
+		}else{
+			die("No se pudo cargar el  $this->model->ruta $this->model->nombre");
+        }
+
+        echo "<script>alert('la tarea se cargo correctamente')</script>";
+        echo "<meta http-equiv='refresh' content='0; url=index.php?c=usuarioComun&a=index'>";
 	}
 
 	public function Ejecutar(){
