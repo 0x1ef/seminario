@@ -80,4 +80,60 @@ class Usuario{
 		$tmp=$resultado2->fetchAll();
 		$this->nombreUsuario=$tmp[0]['nombreusuario'];
 	}
+	
+	public function setNombre($nombre){
+		$this->nombre=$nombre;
+	}
+
+	public function setApellido($apellido){
+		$this->apellido=$apellido;
+	}
+
+	public function setCorreo($correo){
+		$this->correo=$correo;
+	}
+
+	public function setNombreUsuario($nombreUsuario){
+		$this->nombreUsuario=$nombreUsuario;
+	}
+
+	public function setPass($pass){
+		$this->pass=$pass;
+	}
+
+	public function setTipo($tipo){
+		$this->tipodeusuario=$tipo;
+	}
+
+	public function setId($id){
+		$this->id=$id;
+	}
+
+	public function getNombre(){
+		return $this->nombre;
+	}
+
+	public function getApellido(){
+		return $this->apellido;
+	}
+
+	public function getCorreo(){
+		return $this->correo;
+	}
+
+	public function getNombreUsuario(){
+		return $this->nombreUsuario;
+	}
+
+	public function getPass(){
+		return $this->pass;
+	}
+
+	public function getTipo(){
+		return $this->tipodeusuario;
+	}
+
+	public function getId(){
+		return $this->id;
+	}
 }
