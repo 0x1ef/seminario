@@ -1,5 +1,5 @@
 <?php
-class UsuarioComun(){
+class UsuarioComun{
 	private $pdo;
 	private $nombre;
 	private $apellido;
