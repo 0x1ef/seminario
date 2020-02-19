@@ -8,16 +8,15 @@ class UsuarioController{
 		$this->model = new Usuario();
 	}
 	public function login(){
-		$tmp = new Usuario();
 		//cargar datos de usuario
-		$tmp->nombreUsuario = $_POST['usuario'];
-		$tmp->pass = $_POST['pass'];
-		if($tmp->login()){
-			if($tmp->tipodeusuario==1){
+		$this->model->nombreUsuario = $_POST['usuario'];
+		$this->model->pass = $_POST['pass'];
+		if($this->model->login()){
+			if($this->model->tipodeusuario==1){
 				if(!isset($_SESSION)){
 					session_start();
 				}
-				$_SESSION["usuario"]=$tmp->nombreUsuario;
+				$_SESSION["usuario"]=$this->model->nombreUsuario;
 				require_once 'view/header.php';
 				require_once 'view/administrador.php';
 				require_once 'view/footer.php';
@@ -40,13 +39,12 @@ class UsuarioController{
 	}
 
 	public function Registraru(){
-		$tmp = new Usuario();
-		$tmp->nombre = $_POST['nombre'];
-		$tmp->apellido = $_POST['apellido'];
-		$tmp->correo = $_POST['correo'];
-		$tmp->nombreUsuario=$_POST['nombreusr'];
-		$tmp->pass = $_POST['pass'];
-		$tmp->Registraru();
+		$this->model->nombre = $_POST['nombre'];
+		$this->model->apellido = $_POST['apellido'];
+		$this->model->correo = $_POST['correo'];
+		$this->model->nombreUsuario=$_POST['nombreusr'];
+		$this->model->pass = $_POST['pass'];
+		$this->model->Registraru();
 		echo "<scrip>alert('EL usuario se registro correctamente, es necesario aprobación del administrador')</script>";
 		require_once 'view/header.php';
 		require_once 'view/footer.php';
@@ -54,27 +52,82 @@ class UsuarioController{
 	}
 
 	public function consultarUsuariop(){
-			$tmp = new Usuario();
-			$datos=$tmp->consultarUsuariop();
+			$datos=$this->model->consultarUsuariop();
 			require_once 'view/header.php';
 			require_once 'view/consultarUsuariosp.php';
 			require_once 'view/footer.php';
 
 	}
 	public function activar(){
-		$tmp = new Usuario();
-		$tmp->id=$_POST['validar'];
-		$tmp->activar();
-		$ruta='files/'.$tmp->nombreUsuario;
+		$this->model->id=$_POST['validar'];
+		$this->model->activar();
+		$ruta='files/'.$this->model->nombreUsuario;
 		mkdir($ruta,0777);
 		header('Location: index.php?c=administrador&a=index');
 
 	}
 	public function consultarUsuario(){
-		$tmp = new Usuario();
-		$datos=$tmp->consultarUsuario();
+		$datos=$this->model->consultarUsuario();
 		require_once 'view/header.php';
 		require_once 'view/consultarUsuarios.php';
 		require_once 'view/footer.php';
+	}
+
+
+
+	public function setNombre($nombre){
+		$this->nombre=$nombre;
+	}
+
+	public function setApellido($apellido){
+		$this->apellido=$apellido;
+	}
+
+	public function setCorreo($correo){
+		$this->correo=$correo;
+	}
+
+	public function setNombreUsuario($nombreUsuario){
+		$this->nombreUsuario=$nombreUsuario;
+	}
+
+	public function setPass($pass){
+		$this->pass=$pass;
+	}
+
+	public function setTipo($tipo){
+		$this->tipodeusuario=$tipo;
+	}
+
+	public function setId($id){
+		$this->id=$id;
+	}
+
+	public function getNombre(){
+		return $this->nombre;
+	}
+
+	public function getApellido(){
+		return $this->apellido;
+	}
+
+	public function getCorreo(){
+		return $this->correo;
+	}
+
+	public function getNombreUsuario(){
+		return $this->nombreUsuario;
+	}
+
+	public function getPass(){
+		return $this->pass;
+	}
+
+	public function getTipo(){
+		return $this->tipodeusuario;
+	}
+
+	public function getId(){
+		return $this->id;
 	}
 }
