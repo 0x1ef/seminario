@@ -1,7 +1,7 @@
 <?php
 require_once 'model/usuarioComun.php';
 class UsuarioComunController{
-	private model;
+	private $model;
 
 	public function __CONSTRUCT(){
 		$this->model = new UsuarioComun();
