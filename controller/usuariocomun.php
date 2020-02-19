@@ -1,5 +1,5 @@
 <?php
-require_once 'model/usuarioComun.php';
+require_once 'model/usuariocomun.php';
 class UsuarioComunController{
 	private $model;
 

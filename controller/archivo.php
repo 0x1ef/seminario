@@ -40,7 +40,7 @@ class ArchivoController{
         }
 
         echo "<script>alert('la tarea se cargo correctamente')</script>";
-        echo "<meta http-equiv='refresh' content='0; url=index.php?c=usuarioComun&a=index'>";
+        echo "<meta http-equiv='refresh' content='0; url=index.php?c=usuariocomun&a=index'>";
 	}
 
 	public function Ejecutar(){
