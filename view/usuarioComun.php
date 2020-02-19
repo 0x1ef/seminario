@@ -15,19 +15,20 @@
     	<div class="centrar">
     		<h1>Cargar Tarea</h1>
     		<div>
-    			<form method="post" action="" class="px-6 py-4">
+    			<form method="post" action="index.php?c=archivo&a=cargar" enctype="multipart/form-data" class="px-6 py-4">
     				<div class="form-group row">
     					<div class="col-sm-4">
     						<label for="titulo">Titulo o Descripcion</label>
-    						<input type="text" name="titulo" id="titulo" class="form-control">
+    						<input type="text" name="desc" id="titulo" class="form-control">
     					</div>
     				</div>
     				<div class="form-group row">
     					<div class="col-sm-4">
     						<label for="desc">Archivo</label>
-    						<input type="file" name="descripcion" id="desc">
+    						<input type="file" name="subir" id="desc" class="form-control-file">
     					</div>
     				</div>
+                    <button type="submit" class="btn btn-success" name="enviar">Cargar</button>
     			<form>
     		</div>
     	</div>
