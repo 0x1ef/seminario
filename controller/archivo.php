@@ -32,8 +32,10 @@ class ArchivoController{
         $this->model->ruta = './files/'.$nombreUsuario.'/';
         $this->model->tipo = $_FILES['subir']['type'];
         $this->model->size = $_FILES['subir']['size'];
-		
-        if(move_uploaded_file($_FILES['subir']['tmp_name'], $this->model->ruta.$this->model->nombre)){
+		$carpeta='files/'.$nombreUsuario.'/'.$this->model->nombre;
+        echo $carpeta;
+        mkdir($carpeta,0777);
+        if(move_uploaded_file($_FILES['subir']['tmp_name'], $this->model->ruta.$this->model->nombre.'/'.$this->model->nombre)){
 				$this->model->Cargar($idUsuario);
 		}else{
 			die("No se pudo cargar el  $this->model->ruta $this->model->nombre");
