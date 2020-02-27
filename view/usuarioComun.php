@@ -20,7 +20,7 @@
                     <input type="hidden" name="nombreUsuario" value="<?php echo $this->model->getNombreUsuario();?>">
     				<div class="form-group row">
     					<div class="col-sm-4">
-    						<label for="titulo">Titulo o Descripcion</label>
+    						<label for="titulo">Descripcion</label>
     						<input type="text" name="desc" id="titulo" class="form-control">
     					</div>
     				</div>
