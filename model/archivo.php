@@ -59,6 +59,12 @@ class Archivo
 		$resultado->execute();
 	}
 
+	public function finalizar($nombre){
+		$sql="UPDATE tarea SET estado=3 where titulo='$nombre'";
+		$resultado=$this->pdo->prepare($sql);
+		$resultado->execute();
+	}
+	
 	public function obtenerUsr($id){
 		$sql="SELECT nombreusuario FROM usuario where id=:id";
 		$resultado=$this->pdo->prepare($sql);

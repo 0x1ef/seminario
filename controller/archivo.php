@@ -15,6 +15,10 @@ class ArchivoController{
         require_once 'view/footer.php';
     }
     
+    public function listarTareas(){
+
+    }
+
     public function Listar(){
 
 		$resultado = $this->model->Listar();
@@ -47,14 +51,30 @@ class ArchivoController{
 
 	public function Ejecutar(){
 		
-		if($_POST['ejecutar']){
+		if(!empty($_POST['ejecutar']) && $_FILES['comandos']['name']){
 			$file = $_POST['ejecutar'];
-			
+            $usuario= $_POST['idusuario'];
+            $nombreUsuario=$this->model->obtenerUsr($usuario);
+            $this->model->nombre= $_FILES['comandos']['name'];
+            echo " EL nombre es: ".$this->model->nombre;
+            echo " se ejecuto la tarea".$file." del usuario : ".$nombreUsuario;
+            $this->model->ruta="files/".$nombreUsuario."/".$file."/".$this->model->nombre;
+            if(move_uploaded_file($_FILES['comandos']['tmp_name'],$this->model->ruta)){
+
+                    $this->model->ejecutar($file);
+                    shell_exec("./script.sh file/".$nombreUsuario."/".$file." ".$this->model->nombre." log.txt");
+                    $this->model->finalizar($file);
+
+             }else{
+                die("Error No se pudo cargar el archivo ");
+            }
+            //$this->model->ejecutar($file);
+            //shell_exec();
 			require_once 'view/header.php';
 			require_once 'view/ejecutar.php'; 
 			require_once 'view/footer.php';	
 		}else{
-			echo "Error Seleccione un archivo";
+			echo "Error Seleccione un archivo o suba los comandos de ejecución";
 		}
 		
 	}
