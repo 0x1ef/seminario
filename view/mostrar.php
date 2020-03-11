@@ -10,7 +10,8 @@
         echo "<tr>";
         echo "<td>".$valor['titulo']."</td>"; 
 		echo "<td>".$valor['descripcion']."</td>";
-        echo "<td>".$valor['estado']."</td>";
+        if($valor['estado']==1){echo "<td>pendiente</td>";}else{if($valor['estado']==2){echo "<td>ejecutando</td>";}else{echo "<td>finalizado</td>";}}
+        //echo "<td>".$valor['estado']."</td>";
 		echo "<td><input type='radio' name='ejecutar' value='".$valor['titulo']."'></td>";
         echo "<input type='hidden' name=idusuario value='".$valor['usuario']."'";
         echo "</tr>";
