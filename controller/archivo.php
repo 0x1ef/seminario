@@ -56,14 +56,15 @@ class ArchivoController{
             $usuario= $_POST['idusuario'];
             $nombreUsuario=$this->model->obtenerUsr($usuario);
             $this->model->nombre= $_FILES['comandos']['name'];
-            echo " EL nombre es: ".$this->model->nombre;
-            echo " se ejecuto la tarea".$file." del usuario : ".$nombreUsuario;
+            //echo " EL nombre es: ".$this->model->nombre;
+            //echo " se ejecuto la tarea".$file." del usuario : ".$nombreUsuario;
             $this->model->ruta="files/".$nombreUsuario."/".$file."/".$this->model->nombre;
 
             if(move_uploaded_file($_FILES['comandos']['tmp_name'],$this->model->ruta)){
                     $this->model->ejecutar($file);
                     shell_exec("./script.sh files/".$nombreUsuario."/".$file." ".$this->model->nombre." log.txt");
                     $this->model->finalizar($file);
+                    echo "<meta http-equiv='refresh' content='0; url=index.php?c=archivo&a=listar'>";
 
              }else{
                 die("Error No se pudo cargar el archivo ");
