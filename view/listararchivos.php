@@ -15,6 +15,10 @@
 				echo "<td>".$valor."</td>";
 				echo "<td><a href='#'> <i class='fas fa-edit fa-2x'></i></a></td>";
 				echo "</tr>";
+				$titulo=$valor;
+				echo "<input type='hidden' name='tarea' value='".$valor."'>";
 			}
 		}
-	?>
+?>
+</table>
+<a href="index.php?c=archivo&a=resultados" class="btn btn-primary">volver</a>
