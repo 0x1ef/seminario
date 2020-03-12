@@ -69,8 +69,6 @@ class ArchivoController{
              }else{
                 die("Error No se pudo cargar el archivo ");
             }
-            //$this->model->ejecutar($file);
-            //shell_exec();
 			require_once 'view/header.php';
 			require_once 'view/ejecutar.php'; 
 			require_once 'view/footer.php';	
@@ -79,4 +77,35 @@ class ArchivoController{
 		}
 		
 	}
+
+    public function resultados(){
+        $var=$this->model->resultados();
+        require_once 'view/header.php';
+        require_once 'view/resultados.php';
+        require_once 'view/footer.php';
+    }
+
+    public function obtenerResultados(){
+       if(!empty($_POST['resultados'])){
+            $this->model->nombreUsuario=$this->model->obtenerUsr($_POST['idusuario']);
+            $this->model->nombre=$_POST['resultados'];
+            $this->model->ruta="files/".$this->model->nombreUsuario."/".$this->model->nombre;
+            echo "ruta es: ".$this->model->ruta." ";
+            echo $this->model->nombreUsuario;
+            exec("ls ".$this->model->ruta,$var2);
+            require_once 'view/header.php';
+            require_once 'view/listararchivos.php';
+            require_once 'view/footer.php';
+        }else{
+            echo "selecione una tarea";
+        }
+    }
+
+    public function modificararchivo(){
+        $this->model->nombre=$_REQUEST['nombre'];
+        $this->model->ruta=$_REQUEST['r'];
+        $rutaArchivo=$this->model->ruta."/".$this->model->nombre;
+        echo $rutaArchivo;
+
+    }
 }

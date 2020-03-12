@@ -7,7 +7,7 @@
     		<nav class="nav nav-pills flex-column">
  				<a class="nav-link active" href="#">Crear Tarea</a>
   				<a class="nav-link" href="index.php?c=archivo&a=listar">Listar Tareas</a>
- 				 <a class="nav-link" href="#">Link</a>
+ 				 <a class="nav-link" href="index.php?c=archivo&a=resultados">Listar resultados</a>
 			</nav>
     	</div>
     </div>

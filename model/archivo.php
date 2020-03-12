@@ -73,4 +73,11 @@ class Archivo
 		$var=$resultado->fetchAll();
 		return $var[0]['nombreusuario'];
 	}
+
+	public function resultados(){
+		$sql="SELECT usuario,titulo,estado,descripcion,id FROM tarea WHERE estado=2 or estado=3";
+		$resultado=$this->pdo->prepare($sql);
+		$resultado->execute();
+		return $resultado->fetchAll();
+	}
 }
