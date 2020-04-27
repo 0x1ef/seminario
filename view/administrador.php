@@ -22,7 +22,7 @@
     </div>
     <div class="col-6">
     	<div class="centrar">
-    		<h1>---</h1>
+    		<h1></h1>
         </div>
     </div>
   </div>

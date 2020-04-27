@@ -1,4 +1,5 @@
 <header><h1>Administracion de tareas</h1></header>
+<a class="btn btn-primary" href="index.php?c=usuario&a=cerrars">Cerrar Sesion</a>
 <div>
   <div class="row">
     <div class="col-2">
