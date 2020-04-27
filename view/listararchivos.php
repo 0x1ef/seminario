@@ -8,15 +8,13 @@
 			if($valor!=$this->model->nombre){
 				echo "<tr>";
 				echo "<td>".$valor."</td>";
-				echo "<td> <a href='index.php?c=archivo&a=modificararchivo&nombre=".$valor."&r=".$this->model->ruta."'> <i class='fas fa-edit fa-2x'></i></a> <a href='#'><i class='fas fa-trash-alt fa-2x'></i></a> </td>";
+				echo "<td> <a href='index.php?c=archivo&a=modificararchivo&nombre=".$valor."&r=".$this->model->ruta."&titulo=".$this->model->nombre."&idusuario=".$idusuario."'> <i class='fas fa-edit fa-2x'></i></a> <a href='#'><i class='fas fa-trash-alt fa-2x'></i></a> </td>";
 				echo "</tr>";
 			}else{
 				echo "<tr>";
 				echo "<td>".$valor."</td>";
-				echo "<td><a href='#'> <i class='fas fa-edit fa-2x'></i></a></td>";
+				echo "<td><a href='index.php?c=archivo&a=modificararchivo&nombre=".$valor."&r=".$this->model->ruta."&titulo=".$this->model->nombre."&idusuario=".$idusuario."'> <i class='fas fa-edit fa-2x'></i></a></td>";
 				echo "</tr>";
-				$titulo=$valor;
-				echo "<input type='hidden' name='tarea' value='".$valor."'>";
 			}
 		}
 ?>

@@ -11,7 +11,7 @@
 				echo "<td>".$valor['descripcion']."</td>";
 				if($valor['estado']==3){echo "<td>Finalizado</td>";}else{echo "<td>Pendiente</td>";}
 				echo "<td><input type='radio' name='resultados' value='".$valor['titulo']."'>";
-				echo "</tr>";
+				echo "</tr>";		
 			}
 		echo "<input type='hidden' name='idusuario' value='".$valor['usuario']."'>";
 		?>

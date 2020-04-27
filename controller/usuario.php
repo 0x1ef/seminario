@@ -7,30 +7,44 @@ class UsuarioController{
 	public function __CONSTRUCT(){
 		$this->model = new Usuario();
 	}
+
+	public function Index(){
+		if(isset($_SESSION['usuario'])){
+			switch ($_SESSION['tipo']) {
+				case 1:
+					header ('Location: index.php?c=administrador&a=index');
+					break;
+				case 2:
+					header ('Location: index.php?c=usuariocomun&a=index');
+					break;
+			}
+		}else{
+        	require_once 'view/header.php';
+        	require_once 'view/index.html';
+        	require_once 'view/footer.php';
+        }
+    }
+
 	public function login(){
 		//cargar datos de usuario
 		$this->model->nombreUsuario = $_POST['usuario'];
 		$this->model->pass = $_POST['pass'];
+		$var2=$this->model->login();
 		if($this->model->login()){
-			if($this->model->tipodeusuario==1){
-				if(!isset($_SESSION)){
-					session_start();
-				}
-				$_SESSION["usuario"]=$this->model->nombreUsuario;
-				require_once 'view/header.php';
-				require_once 'view/administrador.php';
-				require_once 'view/footer.php';
-			}else{
-				if(!isset($_SESSION)){
-					session_start();
-				}
-				require_once 'view/header.php';
-				require_once 'view/usuarioComun.php';
-				require_once 'view/footer.php';
-			}
-		}else{
-			echo"Datos incorrectos O usuario no activo";
+			$_SESSION['usuario'] = $var2[0]['nombre'];
+			$_SESSION['idusuario'] = $var2[0]['id'];
+			$_SESSION['nombreusr'] = $var2[0]['nombreusuario'];
+			$_SESSION['tipo'] = $var2[0]['tipodeusuario']; 
 		}
+			header ('Location: index.php?c=usuario&a=index');
+		
+			
+	}
+	public function cerrars(){
+		$_SESSION=array();
+		session_destroy();
+		header ('Location: index.php?c=usuario&a=index');
+
 	}
 	public function Registrar(){
 		require_once 'view/header.php';

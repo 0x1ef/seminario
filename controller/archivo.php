@@ -9,12 +9,6 @@ class ArchivoController{
         $this->model = new Archivo();
     }
     
-    public function Index(){
-        require_once 'view/header.php';
-        require_once 'view/index.html';
-        require_once 'view/footer.php';
-    }
-    
     public function listarTareas(){
 
     }
@@ -43,6 +37,7 @@ class ArchivoController{
 				$this->model->Cargar($idUsuario);
 		}else{
 			die("No se pudo cargar el  $this->model->ruta $this->model->nombre");
+            echo $this->model->ruta.$this->model->nombre.'/'.$this->model->nombre;
         }
 
         echo "<script>alert('la tarea se cargo correctamente')</script>";
@@ -86,12 +81,14 @@ class ArchivoController{
     }
 
     public function obtenerResultados(){
-       if(!empty($_POST['resultados'])){
-            $this->model->nombreUsuario=$this->model->obtenerUsr($_POST['idusuario']);
-            $this->model->nombre=$_POST['resultados'];
+       if(!empty($_REQUEST['resultados'])){
+            $idusuario=$_REQUEST['idusuario'];
+            $this->model->nombreUsuario=$this->model->obtenerUsr($_REQUEST['idusuario']);
+            $this->model->nombre=$_REQUEST['resultados'];
             $this->model->ruta="files/".$this->model->nombreUsuario."/".$this->model->nombre;
-            echo "ruta es: ".$this->model->ruta." ";
-            echo $this->model->nombreUsuario;
+            //echo "ruta es: ".$this->model->ruta." ";
+            //echo $this->model->nombre;
+            //echo $this->model->nombreUsuario;
             exec("ls ".$this->model->ruta,$var2);
             require_once 'view/header.php';
             require_once 'view/listararchivos.php';
@@ -104,8 +101,33 @@ class ArchivoController{
     public function modificararchivo(){
         $this->model->nombre=$_REQUEST['nombre'];
         $this->model->ruta=$_REQUEST['r'];
+        $titulo= $_REQUEST['titulo'];
+        $idusuario = $_REQUEST['idusuario'];
+        //echo $titulo;
         $rutaArchivo=$this->model->ruta."/".$this->model->nombre;
-        echo $rutaArchivo;
+        //echo $rutaArchivo;
+        require_once 'view/header.php';
+        require_once 'view/modificararchivos.php';
+        require_once 'view/footer.php';
+
+    }
+
+    public function confirmarmodificacion(){
+        $fn= $_POST['r'];
+        $titulo= $_POST['titulo'];
+        $idusuario=$_POST['idusuario'];
+        //echo $fn;
+        $content = stripslashes($_POST['archivo']);
+        $fp = fopen($fn,"w") or die ("Error al abrir el archivo");
+        fputs($fp,$content);
+        fclose($fp) or die ("Error al cerrar el archivo");
+        echo "<script> alert('Se modifico con exito')</script>";
+        echo "<META HTTP-EQUIV='REFRESH' CONTENT='0;URL=index.php?c=archivo&a=obtenerResultados&resultados=$titulo&idusuario=$idusuario'>";
+        
+    }
+
+    public function eliminararchivo(){
+        $this->model->ruta=$_POST['r'];
 
     }
 }

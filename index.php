@@ -1,7 +1,8 @@
 <?php
+session_start();
 require_once 'config/conexion.php';
 
-$controller = 'archivo';
+$controller = 'usuario';
 // Todo esta lógica hara el papel de un FrontController
 if(!isset($_REQUEST['c']))
 {
