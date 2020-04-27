@@ -33,7 +33,7 @@ class ArchivoController{
 		$carpeta='files/'.$nombreUsuario.'/'.$this->model->nombre;
         echo $carpeta;
         mkdir($carpeta,0777);
-        if(move_uploaded_file($_FILES['subir']['tmp_name'], $this->model->ruta.$this->model->nombre.'/'.$this->model->nombre)){
+        if(move_uploaded_file($_FILES['subir']['tmp_name'], $carpeta.$this->model->nombre)){
 				$this->model->Cargar($idUsuario);
 		}else{
 			die("No se pudo cargar el  $this->model->ruta $this->model->nombre");
@@ -109,7 +109,6 @@ class ArchivoController{
         require_once 'view/header.php';
         require_once 'view/modificararchivos.php';
         require_once 'view/footer.php';
-
     }
 
     public function confirmarmodificacion(){
@@ -126,8 +125,14 @@ class ArchivoController{
         
     }
 
-    public function eliminararchivo(){
-        $this->model->ruta=$_POST['r'];
+    public function eliminara(){
+        $this->model->nombre=$_REQUEST['nombre'];
+        $this->model->ruta=$_REQUEST['r'];
+        $titulo= $_REQUEST['titulo'];
+        $idusuario = $_REQUEST['idusuario'];
+        $rutaArchivo=$this->model->ruta."/".$this->model->nombre;
+        unlink($rutaArchivo);
+        echo "<META HTTP-EQUIV='REFRESH' CONTENT='0;URL=index.php?c=archivo&a=obtenerResultados&resultados=$titulo&idusuario=$idusuario'>";
 
     }
 }

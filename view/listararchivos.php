@@ -8,7 +8,10 @@
 			if($valor!=$this->model->nombre){
 				echo "<tr>";
 				echo "<td>".$valor."</td>";
-				echo "<td> <a href='index.php?c=archivo&a=modificararchivo&nombre=".$valor."&r=".$this->model->ruta."&titulo=".$this->model->nombre."&idusuario=".$idusuario."'> <i class='fas fa-edit fa-2x'></i></a> <a href='#'><i class='fas fa-trash-alt fa-2x'></i></a> </td>";
+				echo "<td> <a href='index.php?c=archivo&a=modificararchivo&nombre=".$valor."&r=".$this->model->ruta."&titulo=".$this->model->nombre."&idusuario=".$idusuario."'> 
+					<i class='fas fa-edit fa-2x'></i></a> 
+					<a href='index.php?c=archivo&a=eliminara&nombre=".$valor."&r=".$this->model->ruta."&titulo=".$this->model->nombre."&idusuario=".$idusuario."'><i class='fas fa-trash-alt fa-2x'></i></a> 
+					<a href='#'><i class='fas fa-file-download fa-2x'></a></td>";
 				echo "</tr>";
 			}else{
 				echo "<tr>";

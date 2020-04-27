@@ -7,4 +7,6 @@ vendor/
 
 tests/
 
+files
+
 composer.lock
