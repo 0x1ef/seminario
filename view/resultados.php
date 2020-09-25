@@ -1,10 +1,11 @@
-<header><h1>Resultasdos</h1></header>
+<header><h1>Resultados</h1></header>
 <form method="POST" action=index.php?c=archivo&a=obtenerResultados>
 	<table class="table table-bordered">
 		<tr class="table-primary">
 			<th>Nombre</th><th>descripción</th><th>estado</th><th>Selecionar</th>
 		</tr>
 		<?php
+			if ($var != null) {
 			foreach ($var as $valor){
 				echo "<tr>";
 				echo "<td>".$valor['titulo']."</td>";
@@ -14,6 +15,7 @@
 				echo "</tr>";		
 			}
 		echo "<input type='hidden' name='idusuario' value='".$valor['usuario']."'>";
+			}
 		?>
 	</table>
 	<input type="submit" class="btn btn-primary" value="obtener resultados">

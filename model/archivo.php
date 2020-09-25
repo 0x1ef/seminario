@@ -2,7 +2,7 @@
 class Archivo
 {
 	private $pdo;
-    
+ 
     public $id;
     public $nombres;
     public $descripcion;
@@ -25,9 +25,10 @@ class Archivo
 	public function Listar()
 	{
 		try
-		{
+		{	
+			$idusuario=$_SESSION['idusuario'];
 			$result = array();
-			$stm = $this->pdo->prepare("SELECT * FROM tarea");
+			$stm = $this->pdo->prepare("SELECT * FROM tarea WHERE usuario=".$idusuario);
 			$stm->execute();
 
 			return $stm->fetchAll();
@@ -75,7 +76,8 @@ class Archivo
 	}
 
 	public function resultados(){
-		$sql="SELECT usuario,titulo,estado,descripcion FROM tarea WHERE estado=2 or estado=3";
+		$idusuario = $_SESSION['idusuario'];
+		$sql="SELECT usuario,titulo,estado,descripcion FROM tarea WHERE estado=2 or estado=3 && usuario=".$idusuario;
 		$resultado=$this->pdo->prepare($sql);
 		$resultado->execute();
 		return $resultado->fetchAll();
